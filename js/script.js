@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
          });
     }
 
-    deleteAdv(adv);
+    //deleteAdv(adv);
     makeChanges();
     createMovieList(movieDB.movies, movieList);
 });
