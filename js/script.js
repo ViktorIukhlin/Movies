@@ -1,4 +1,3 @@
-
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         movieList = document.querySelector('.promo__interactive-list'),
         addForm = document.querySelector('form.add'),
         addInput = addForm.querySelector('.adding__input'),
-        checkbox = addForm.querySelector('[type="checkbox"]');
+        checkbox = addForm.querySelector('[type="checkbox"]'),
+        promo = document.querySelectorAll('.promo__menu-item');
 
     addForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if(favorite) {
-                console.log('Выбран любимый фильм');
+                newFilm += ' (Любимый)';
             }
 
             movieDB.movies.push(newFilm);
@@ -88,6 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 createMovieList(films, parent);
              });
          });
+
+        ////Menu
+
+        function remove(){
+            promo.forEach(item => {
+                item.classList.remove('promo__menu-item_active');
+            });
+        }
+
+        promo.forEach(item => {
+            item.addEventListener('click', () => {
+                event.preventDefault();
+                remove();
+                item.classList.add('promo__menu-item_active');
+            });
+        });
+
     }
 
     //deleteAdv(adv);
